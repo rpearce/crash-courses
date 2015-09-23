@@ -6,57 +6,22 @@
   </head>
   <body>
     <div class="container">
-      <main role="main">
+      <main role="main" class="main transparent" data-js="main">
         <header class="city" role="header">
-          <h1 class="city__name" data-js="cityName">Washington</h1>
-          <small class="city__weather">Mostly Cloudy</small>
-          <div class="city__temp">20</div>
+          <h1 class="city__name" data-js="cityName">Charleston</h1>
+          <small class="city__weather" data-js="cityWeatherCurrent">Change of Meatballs</small>
+          <div class="city__temp" data-js="cityTempCurrent">20</div>
         </header>
 
         <section class="section--padded">
           <table class="days">
-            <tbody>
-              <tr class="day">
-                <th class="day__name">Tuesday</th>
-                <td class="day__weather"><i data-icon="H"></i></td>
-                <td class="day__high">79</td>
-                <td class="day__low">55</td>
-              </tr>
-              <tr class="day">
-                <th class="day__name">Wednesday</th>
-                <td class="day__weather"><i data-icon="R"></i></td>
-                <td class="day__high">81</td>
-                <td class="day__low">61</td>
-              </tr>
-              <tr class="day">
-                <th class="day__name">Thursday</th>
-                <td class="day__weather"><i data-icon="R"></i></td>
-                <td class="day__high">72</td>
-                <td class="day__low">57</td>
-              </tr>
-              <tr class="day">
-                <th class="day__name">Friday</th>
-                <td class="day__weather"><i data-icon="B"></i></td>
-                <td class="day__high">70</td>
-                <td class="day__low">57</td>
-              </tr>
-              <tr class="day">
-                <th class="day__name">Saturday</th>
-                <td class="day__weather"><i data-icon="B"></i></td>
-                <td class="day__high">69</td>
-                <td class="day__low">63</td>
-              </tr>
-              <tr class="day">
-                <th class="day__name">Sunday</th>
-                <td class="day__weather"><i data-icon="H"></i></td>
-                <td class="day__high">74</td>
-                <td class="day__low">61</td>
-              </tr>
+            <tbody data-js="daysInner">
             </tbody>
           </table>
         </section>
       </main>
     </div>
+
     <script src="app.js" async></script>
   </body>
 </html>

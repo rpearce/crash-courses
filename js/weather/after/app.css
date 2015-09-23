@@ -41,6 +41,10 @@ i {
   padding: 40px 20px;
   text-align: center;
 }
+.city__name,
+.city__weather {
+  text-transform: capitalize;
+}
 .city__name {
   font-weight: 100;
   margin: 0;
@@ -98,4 +102,12 @@ i {
 }
 .day__low {
   color: rgba(255, 255, 255, 0.4);
+}
+.main {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+.transparent {
+  opacity: 0;
+  visibility: hidden;
 }
