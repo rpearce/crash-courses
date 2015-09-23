@@ -43,7 +43,7 @@
     var data = JSON.parse(res.target.response);
     var city = data.name;
     cityDisplayed = city;
-    var cityWeatherCurrent = data.weather[0].main;
+    var cityWeatherCurrent = data.weather[0].description;
     var cityTempCurrent = kelvinToFahrenheit(data.main.temp);
 
     document.querySelector('[data-js="cityNameInput"]').value = city;
@@ -104,7 +104,11 @@
         icon = 'E';
         break;
       case 8:
-        icon = 'Y';
+        if (code === 800) {
+          icon = 'B';
+        } else {
+          icon = 'Y';
+        }
         break;
       case 9:
         console.log('9xx');
