@@ -9,21 +9,32 @@
 ;(function() {
   var currentLoaded = false;
   var forecastLoaded = false;
-  var city = 'Charleston,SC';
+  var cityQuery = 'Charleston, SC';
+  var cityDisplayed = '';
 
-  fetchCurrent();
-  fetchForecast();
+  fetchAll();
+
+  var cityNode = document.querySelector('[data-js="cityNameInput"]');
+  cityNode.addEventListener('change', function(e) {
+    cityQuery = this.value;
+    fetchAll();
+  });
+
+  function fetchAll() {
+    fetchCurrent();
+    fetchForecast();
+  }
 
   function fetchCurrent() {
     var req = new XMLHttpRequest();
-    req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city);
+    req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(cityQuery));
     req.onload = handleLoadCurrent;
     req.send();
   }
 
   function fetchForecast() {
     var req = new XMLHttpRequest();
-    req.open('GET', 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + '&cnt=10');
+    req.open('GET', 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + encodeURIComponent(cityQuery) + '&cnt=10');
     req.onload = handleLoadForecast;
     req.send();
   }
@@ -31,10 +42,11 @@
   function handleLoadCurrent(res) {
     var data = JSON.parse(res.target.response);
     var city = data.name;
+    cityDisplayed = city;
     var cityWeatherCurrent = data.weather[0].main;
     var cityTempCurrent = kelvinToFahrenheit(data.main.temp);
 
-    document.querySelector('[data-js="cityName"]').innerText = city;
+    document.querySelector('[data-js="cityNameInput"]').value = city;
     document.querySelector('[data-js="cityWeatherCurrent"]').innerText = cityWeatherCurrent;
     document.querySelector('[data-js="cityTempCurrent"]').innerText = cityTempCurrent;
 
@@ -54,7 +66,7 @@
       var weekday = weekdays[date.getDay()];
       var high = kelvinToFahrenheit(day.temp.max);
       var low = kelvinToFahrenheit(day.temp.min);
-      //'<td class="day__weather"><img src="http://openweathermap.org/img/w/'+day.weather[0].icon+'.png" /></td>' +
+      //'<td class="day__weather"><img src="http://openweathermap.org/img/w/'+day.weather[0].icon+'.png" /></td>' + // if you want to see the openweather icons
       markup += '<tr class="day">' +
         '<th class="day__name">' + weekday + '</th>' +
         '<td class="day__weather"><i data-icon="'+ getConditionsIcon(day.weather[0].id) +'"></i></td>' +
