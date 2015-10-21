@@ -11,6 +11,7 @@
   var forecastLoaded = false;
   var cityQuery = 'Charleston, SC';
   var cityDisplayed = '';
+  var apiKey = '8e2d87f18292dd1305f3d6fbde147405';
 
   fetchAll();
 
@@ -27,14 +28,14 @@
 
   function fetchCurrent() {
     var req = new XMLHttpRequest();
-    req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(cityQuery));
+    req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(cityQuery) + '&APPID=' + apiKey);
     req.onload = handleLoadCurrent;
     req.send();
   }
 
   function fetchForecast() {
     var req = new XMLHttpRequest();
-    req.open('GET', 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + encodeURIComponent(cityQuery) + '&cnt=10');
+    req.open('GET', 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + encodeURIComponent(cityQuery) + '&cnt=10' + '&APPID=' + apiKey);
     req.onload = handleLoadForecast;
     req.send();
   }
