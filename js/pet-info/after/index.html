@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pet Info</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600" rel="stylesheet" type="text/css" />
+    <link href="../app.css" rel="stylesheet" media="all" />
+    <script src="app.js" async></script>
+  </head>
+  <body>
+    <main role="main">
+      <div class="layout--leftHalf banner"></div>
+      <div class="layout--rightHalf">
+        <div class="layout--constrained">
+          <section aria-labelledby="stepForm-title">
+            <h2 id="stepForm-title">Pet Information</h2>
+            <form class="stepForm" action="/" method="POST" data-js="petForm">
+              <div>
+                <div class="stepForm__item">
+                  <input type="text" id="stepForm-input1" class="stepForm__input" name="pet[name]" placeholder="Lola" />
+                  <label for="stepForm-input1" class="stepForm__label">Name</label>
+                </div>
+                <div class="stepForm__item">
+                  <input type="text" id="stepForm-input2" class="stepForm__input" name="pet[type]" placeholder="Golden Retriever" />
+                  <label for="stepForm-input2" class="stepForm__label">Type</label>
+                </div>
+                <div class="stepForm__item--borderless stepForm__item--nonText">
+                  <label class="stepForm__label">Gender</label>
+                  <input type="radio" name="pet[gender]" id="stepForm-input4" value="female" />
+                  <label for="stepForm-input4">Female</label>
+                  <input type="radio" name="pet[gender]" id="stepForm-input5" value="male" />
+                  <label for="stepForm-input5">Male</label>
+                </div>
+                <div class="stepForm__actions">
+                  <button class="stepForm__btn--right btn btn--primary">Submit</button>
+                </div>
+              </div>
+            </form>
+          </section>
+          <section aria-labelledby="petInfo-header">
+            <h2 id="petInfo-header">Pets</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th class="align--center">Gender</th>
+                </tr>
+              </thead>
+              <tbody data-js="pets"></tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
