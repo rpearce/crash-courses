@@ -5,6 +5,7 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   line-height: 1.75rem;
   color: #4d4d4d;
+  margin: 0;
 }
 h1,
 h2,
@@ -19,6 +20,10 @@ a {
 a:hover {
   color: #236c9c;
   border-bottom-color: #236c9c;
+}
+img {
+  max-width: 100%;
+  display: block;
 }
 .list--bare {
   list-style: none;
@@ -35,4 +40,15 @@ a:hover {
 .layout--constrained {
   max-width: 600px;
   margin: 40px auto;
+}
+@media only screen and (max-width: 667px) {
+  body {
+    margin: 10px;
+    border: 1px solid #f2f2f2;
+  }
+  .layout--constrained {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
